@@ -1,0 +1,70 @@
+---
+title: "BOJfame"
+output:
+  github_document:
+    fig_width: 8
+    fig_height: 4
+---
+
+The `BOJfame` package provides an `R` interface to the Bank of Japan's [Time-Series Data Search](https://www.stat-search.boj.or.jp/index_en.html) portal. Specifically, it allows users to download individual series codes directly from within R using exact series codes.
+
+The name derives from the "famecgi2" script underpinning the BOJ's database system; most likely this is a reference to the [FAME](https://en.wikipedia.org/wiki/FAME_(database)) database tool.
+
+## Install package
+
+The package can be installed from Github.
+
+```{r install, eval=FALSE, message=FALSE, warning=FALSE}
+library(devtools)
+install_github("stefanangrick/BOJfame")  # GitHub
+```
+
+## Example usage
+
+To import data, first load the package.
+
+```{r loading, message=FALSE, warning=FALSE}
+library("BOJfame")
+```
+
+Next, we run the `get_bojfame()` function to download two data series. Note that data series need to be of the same frequency, otherwise an error is returned. In the example below, we download two daily-frequency time series. We use `start_year` and `end_year` to specify the desired date range.
+
+```{r datasets, message=FALSE, warning=FALSE}
+bojdata <- get_bojfame(series_codes = c("FM01'STRDCLUCON", "IR01'MADR1Z@D"),
+                       start_year = 1995, end_year = 2022)
+```
+
+The `get_bojfame()` function returns a list with a [tibble](https://tibble.tidyverse.org/) data frame holding the actual data. Access the data using `$data` variable.
+
+```{r data, message=FALSE, warning=FALSE}
+bojdata$data
+```
+
+Use `$meta` to access a [tibble](https://tibble.tidyverse.org/) data frame holding relevant meta data.
+
+```{r meta, message=FALSE, warning=FALSE}
+bojdata$meta
+```
+
+To plot the data using [ggplot2](https://ggplot2.tidyverse.org), run the below.
+
+```{r plot, message=FALSE, warning=FALSE}
+library("dplyr")
+library("ggplot2")
+
+bojdata$data <- mutate(bojdata$data,
+                       indicator = recode(indicator,
+                                          "FM01'STRDCLUCON" = "Call rate",
+                                          "IR01'MADR1Z@D" = "Basic loan rate"))
+
+ggplot(bojdata$data, aes(x = date, y = obs_value)) +
+  geom_line(aes(colour = indicator)) +
+  labs(title = "Interest rates", x = "Date", y = "%") +
+  theme(legend.title = element_blank())
+```
+
+Note that BOJ data sets come with a number of different time formats. The [zoo](https://cran.r-project.org/package=zoo) package (e.g. `as.yearmon()`) should be able to parse most formats.
+
+## Note
+
+This package is in no way officially related to or endorsed by the [Bank of Japan](https://www.boj.or.jp/). Please don't abuse the BOJ's servers with unnecessary calls.

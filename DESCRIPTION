@@ -1,0 +1,27 @@
+Package: BOJfame
+Type: Package
+Title: Interface to Bank of Japan Time-Series Data Search portal
+Version: 0.0.0.9000
+Authors@R: person("Stefan", "Angrick", email = "contact@stefanangrick.net",
+                  role = c("aut", "cre", "cph"))
+Description: Directly download data from BOJ Time-Series Data Search 
+  <https://www.stat-search.boj.or.jp/index_en.html> portal.
+License: MIT + file LICENSE
+URL: https://github.com/stefanangrick/BOJfame
+BugReports: https://github.com/stefanangrick/BOJfame/issues
+Suggests:
+    knitr,
+    rmarkdown,
+    ggplot2,
+    zoo
+Imports:
+    dplyr,
+    readr,
+    tidyr,
+    tidyselect,
+    rvest,
+    urltools,
+    xml2
+VignetteBuilder: knitr
+Encoding: UTF-8
+RoxygenNote: 7.2.3
