@@ -170,8 +170,9 @@ get_bojfame <- function(series_codes, start_year = NULL, end_year = NULL,
             as.character(page)) ||
       (length(nodes) < 1)) {
     stop(paste0("Not found\n",
-                "Common causes: At least one of your series codes is ",
-                "invalid, or you're series codes for different frequencies."))
+                "Common causes: One or more of your series codes may be ",
+                "invalid, or you may be combining series with different ",
+                "frequencies."))
   }
 
   # Download CSV file

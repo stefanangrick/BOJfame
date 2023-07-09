@@ -2,11 +2,11 @@
 title: "BOJfame"
 author: "Stefan Angrick"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{BOJ}
+  %\VignetteIndexEntry{BOJfame}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_vignette
 ---
 
 The `BOJfame` package provides an `R` interface to the Bank of Japan's [Time-Series Data Search](https://www.stat-search.boj.or.jp/index_en.html) portal. Specifically, it allows users to download individual series codes directly from within R using exact series codes.
@@ -26,32 +26,32 @@ install_github("stefanangrick/BOJfame")  # GitHub
 
 To import data, first load the package.
 
-```{r loading, message=FALSE, warning=FALSE}
+```{r loading, eval=FALSE, message=FALSE, warning=FALSE}
 library("BOJfame")
 ```
 
 Next, we run the `get_bojfame()` function to download two data series. Note that data series need to be of the same frequency, otherwise an error is returned. In the example below, we download two daily-frequency time series. We use `start_year` and `end_year` to specify the desired date range.
 
-```{r datasets, message=FALSE, warning=FALSE}
+```{r datasets, eval=FALSE, message=FALSE, warning=FALSE}
 bojdata <- get_bojfame(series_codes = c("FM01'STRDCLUCON", "IR01'MADR1Z@D"),
                        start_year = 1995, end_year = 2022)
 ```
 
 The `get_bojfame()` function returns a list with a [tibble](https://tibble.tidyverse.org/) data frame holding the actual data. Access the data using `$data` variable.
 
-```{r data, message=FALSE, warning=FALSE}
+```{r data, eval=FALSE, message=FALSE, warning=FALSE}
 bojdata$data
 ```
 
 Use `$meta` to access a [tibble](https://tibble.tidyverse.org/) data frame holding relevant meta data.
 
-```{r meta, message=FALSE, warning=FALSE}
+```{r meta, eval=FALSE, message=FALSE, warning=FALSE}
 bojdata$meta
 ```
 
 To plot the data using [ggplot2](https://ggplot2.tidyverse.org), run the below.
 
-```{r plot, message=FALSE, warning=FALSE}
+```{r plot, eval=FALSE, message=FALSE, warning=FALSE}
 library("dplyr")
 library("ggplot2")
 

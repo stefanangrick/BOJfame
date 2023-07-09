@@ -60,7 +60,7 @@ bojdata$data
     ##  8 1995-01-04 IR01'MADR1Z@D        1.75
     ##  9 1995-01-05 FM01'STRDCLUCON     NA   
     ## 10 1995-01-05 IR01'MADR1Z@D        1.75
-    ## # … with 20,444 more rows
+    ## # ℹ 20,444 more rows
 
 Use `$meta` to access a [tibble](https://tibble.tidyverse.org/) data
 frame holding relevant meta data.
@@ -70,18 +70,17 @@ bojdata$meta
 ```
 
     ## # A tibble: 9 × 3
-    ##   Attribute            `FM01'STRDCLUCON`                                 IR01'…¹
-    ##   <chr>                <chr>                                             <chr>  
-    ## 1 Series code          FM01'STRDCLUCON                                   IR01'M…
-    ## 2 Name of time-series  Call Rate, Uncollateralized Overnight, Average (… The Ba…
-    ## 3 Unit                 percent per annum                                 Percen…
-    ## 4 Statistical category Call Rate                                         The Ba…
-    ## 5 Observation          AVERAGED                                          END    
-    ## 6 start of time-series 1998/01/05                                        1882/1…
-    ## 7 End of time-series   2022/12/26                                        2022/1…
-    ## 8 Frequency            DAILY                                             DAILY  
-    ## 9 Notes                <NA>                                              <NA>   
-    ## # … with abbreviated variable name ¹​`IR01'MADR1Z@D`
+    ##   Attribute            `FM01'STRDCLUCON`                         `IR01'MADR1Z@D`
+    ##   <chr>                <chr>                                     <chr>          
+    ## 1 Series code          FM01'STRDCLUCON                           IR01'MADR1Z@D  
+    ## 2 Name of time-series  Call Rate, Uncollateralized Overnight, A… The Basic Disc…
+    ## 3 Unit                 percent per annum                         Percent per an…
+    ## 4 Statistical category Call Rate                                 The Basic Disc…
+    ## 5 Observation          AVERAGED                                  END            
+    ## 6 start of time-series 1998/01/05                                1882/10/11     
+    ## 7 End of time-series   2023/07/05                                2023/07/05     
+    ## 8 Frequency            DAILY                                     DAILY          
+    ## 9 Notes                <NA>                                      <NA>
 
 To plot the data using [ggplot2](https://ggplot2.tidyverse.org), run the
 below.
