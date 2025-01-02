@@ -7,11 +7,11 @@
 pivot_longer_bojfame(tbl)
 }
 \arguments{
-\item{tbl}{Tibble. A tibble data frame holding a BOJ FAME data set (usually
-obtained via \code{get_bojfame(series_codes, auto_pivot = FALSE)}).}
+\item{tbl}{Tibble. A tibble data frame containing a BOJ FAME data set
+(usually obtained via \code{get_bojfame(series_codes, auto_pivot = FALSE)}).}
 }
 \value{
-A tibble data frame.
+A tibble data frame in long format.
 }
 \description{
 Convert a BOJ FAME data set to long format

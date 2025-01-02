@@ -1,7 +1,7 @@
 Package: BOJfame
 Type: Package
 Title: Interface to Bank of Japan Time-Series Data Search Portal
-Version: 0.0.1
+Version: 0.1
 Authors@R: person("Stefan", "Angrick", email = "contact@stefanangrick.net",
                   role = c("aut", "cre", "cph"))
 Description: Directly download data from BOJ Time-Series Data Search 
@@ -24,4 +24,4 @@ Imports:
     xml2
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

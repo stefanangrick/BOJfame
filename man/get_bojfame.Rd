@@ -14,14 +14,15 @@ get_bojfame(
 )
 }
 \arguments{
-\item{series_codes}{Character vector. Contains the series code(s) to be
-retrieved. Note that all series must be of the same frequency.}
+\item{series_codes}{Character. A vector of series codes to retrieve. All
+codes must correspond to data of the same frequency.}
 
 \item{start_year}{Numeric. Start year in format: YYYY (optional).}
 
 \item{end_year}{Numeric. End year in format: YYYY (optional).}
 
-\item{base_url}{Character. URL to generate BOJ data download page (optional).}
+\item{base_url}{Character. URL for generating the BOJ data download page
+(optional).}
 
 \item{auto_pivot}{Logical. Controls whether source data set is converted to
 long format. Set this to \code{FALSE} to disable conversion (default: TRUE).}
@@ -31,15 +32,15 @@ long format. Set this to \code{FALSE} to disable conversion (default: TRUE).}
 }
 \value{
 A list containing the time series data (\code{$data}), corresponding
-meta data (\code{$meta}), the download page URL (\code{$page_url}), and the
-CSV file URL ((\code{$item_url})).
+meta data (\code{$meta}), the URL of the download page (\code{$page_url}),
+and the URL of the CSV file ((\code{$item_url})).
 }
 \description{
 Download and parse data from BOJ Time-Series Data Search portal
 }
 \details{
-If \code{start_year} and \code{end_year} are missing, the last 5
-years of data (for daily series, the last year) will be downloaded.
+If \code{start_year} and \code{end_year} are omitted, the last five
+years of data (or the last year for daily series) will be downloaded.
 }
 \examples{
 \donttest{

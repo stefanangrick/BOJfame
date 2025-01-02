@@ -1,6 +1,6 @@
 if (getRversion() >= "2.15.1") utils::globalVariables(c("obs_value"))
 
-# Download a file
+# Download a file from a given URL
 .download_file <- function(file_url, ...) {
   # Save user options
   old_options <- options()
@@ -50,10 +50,10 @@ if (getRversion() >= "2.15.1") utils::globalVariables(c("obs_value"))
 
 #' Convert a BOJ FAME data set to long format
 #'
-#' @param tbl Tibble. A tibble data frame holding a BOJ FAME data set (usually
-#' obtained via \code{get_bojfame(series_codes, auto_pivot = FALSE)}).
+#' @param tbl Tibble. A tibble data frame containing a BOJ FAME data set
+#' (usually obtained via \code{get_bojfame(series_codes, auto_pivot = FALSE)}).
 #'
-#' @return A tibble data frame.
+#' @return A tibble data frame in long format.
 #' @export
 #'
 #' @examples
@@ -91,23 +91,24 @@ pivot_longer_bojfame <- function(tbl) {
 
 #' Download and parse data from BOJ Time-Series Data Search portal
 #'
-#' @param series_codes Character vector. Contains the series code(s) to be
-#' retrieved. Note that all series must be of the same frequency.
+#' @param series_codes Character. A vector of series codes to retrieve. All
+#' codes must correspond to data of the same frequency.
 #' @param start_year Numeric. Start year in format: YYYY (optional).
 #' @param end_year Numeric. End year in format: YYYY (optional).
-#' @param base_url Character. URL to generate BOJ data download page (optional).
+#' @param base_url Character. URL for generating the BOJ data download page
+#' (optional).
 #' @param auto_pivot Logical. Controls whether source data set is converted to
 #' long format. Set this to \code{FALSE} to disable conversion (default: TRUE).
 #' @param ... Arguments passed to \code{download.file()} (e.g.
 #' \code{quiet = TRUE}).
 #'
 #' @return A list containing the time series data (\code{$data}), corresponding
-#' meta data (\code{$meta}), the download page URL (\code{$page_url}), and the
-#' CSV file URL ((\code{$item_url})).
+#' meta data (\code{$meta}), the URL of the download page (\code{$page_url}),
+#' and the URL of the CSV file ((\code{$item_url})).
 #' @export
 #'
-#' @details If \code{start_year} and \code{end_year} are missing, the last 5
-#' years of data (for daily series, the last year) will be downloaded.
+#' @details If \code{start_year} and \code{end_year} are omitted, the last five
+#' years of data (or the last year for daily series) will be downloaded.
 #'
 #' @examples
 #' \donttest{
